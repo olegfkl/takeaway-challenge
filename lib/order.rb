@@ -1,4 +1,4 @@
 class Order
-  def iniiazlize
+  def initialize
   end
 end
