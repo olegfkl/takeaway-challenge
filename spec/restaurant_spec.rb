@@ -2,7 +2,6 @@ require 'restaurant'
 
 describe Restaurant do
 
-
   subject(:restaurant) { described_class.new }
   # let(:menu_class) { double(:menu_class) }
   # let(:restaurant_dobule) { double(:menu_class) }
@@ -14,15 +13,18 @@ describe Restaurant do
         #find out how to test injection of the new instance
       end
       it 'Creates a new menu instance @order' do
-
+         #find out how to test injection of the new instance
+      end
+      it 'Creates a new menu instance @printer' do
+         #find out how to test injection of the new instance
       end
     end
   end
-  describe '#view_menu' do
-    context 'When viewing menu' do
+  xdescribe '#output_menu' do
+    context 'When printing menu' do
       it 'Return a list of dishes and prices' do
-        allow(restaurant.menu).to receive(:view).and_return 'yes'
-        expect(restaurant.view_menu).to eq 'yes'
+        allow(restaurant.printer).to receive(:output).and_return 'yes'
+        expect(restaurant.ask_for_menu).to eq 'yes'
       end
     end
   end
