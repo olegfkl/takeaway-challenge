@@ -1,17 +1,14 @@
 class Printer
+  attr_reader :basket
   def initialize
   end
 
   def output(arg)
+    puts "--------------------"
+    puts "MENU"
+    puts "--------------------"
     arg.each do |k, v|
-      puts ''
-      puts "--------------------"
-      puts "#{k[0].upcase}:"
-      puts "--------------------"
-      puts ''
-        v.each do |d, y|
-      puts "| #{d}: £#{y}"
+      puts "| #{k}: £#{v}"
     end
-    end
-    end
+  end
 end

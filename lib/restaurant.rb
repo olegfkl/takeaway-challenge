@@ -16,6 +16,7 @@ attr_reader :menu , :order , :printer
   end
 
   def select_food
+    menu.list
   end
 
   def place_order
