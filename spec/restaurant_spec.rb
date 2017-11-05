@@ -42,5 +42,11 @@ describe Restaurant do
       end
     end
   end
-
+  xdescribe '#selections' do
+    context 'When viewing menu' do
+      it 'Return a list of dishes and prices' do
+        # expect(restaurant_dobule.view_menu).to eq 'yes'
+      end
+    end
+  end
 end
