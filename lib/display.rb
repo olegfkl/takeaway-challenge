@@ -56,4 +56,7 @@ class Display
   def total(cost)
     puts "| Total to pay: £#{cost}"
   end
+  def address_error
+  raise "We couldn't find your address!"
+  end
 end

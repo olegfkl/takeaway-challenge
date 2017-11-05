@@ -12,9 +12,10 @@ class Restaurant
                   display = Display.new
                 )
 
-    @display = display
-    @menu    = menu
-    @order   = order
+    @display    = display
+    @menu       = menu
+    @order      = order
+    @orders_log = []
   end
 
   def the_menu
@@ -29,6 +30,8 @@ class Restaurant
   end
 
   def place_order
+    order.process
+    order.complete
   end
 
   def view_basket
