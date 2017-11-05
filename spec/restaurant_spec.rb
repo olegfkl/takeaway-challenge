@@ -20,11 +20,12 @@ describe Restaurant do
       end
     end
   end
-  xdescribe '#output_menu' do
+  describe '#the menu' do
     context 'When printing menu' do
       it 'Return a list of dishes and prices' do
-        allow(restaurant.printer).to receive(:output).and_return 'yes'
-        expect(restaurant.ask_for_menu).to eq 'yes'
+        list = double(:list)
+        allow(restaurant.display).to receive(:menus).and_return true
+        expect(restaurant.the_menu).to eq true
       end
     end
   end

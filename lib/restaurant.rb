@@ -1,42 +1,41 @@
 # Take away challange
 require_relative 'menu'
 require_relative 'order'
-require_relative 'display'
 
 class Restaurant
 
-  attr_reader :menu, :order, :display
+  attr_reader :menu, :order
 
   def initialize( menu    = Menu.new ,
-                  order   = Order.new,
-                  display = Display.new
+                  order   = Order.new
                 )
 
-    @display    = display
     @menu       = menu
     @order      = order
-    @orders_log = []
   end
 
   def the_menu
-      display.menus(menu.list)
+      menu.list
   end
 
   def select_food
-    display.select_instruction
-    display.options(menu.list)
     select_engine
-    display.total(order.cost)
+    order.cost
   end
 
   def place_order
     order.process
-    order.complete
+    order.confirmation
   end
 
+
   def view_basket
-   display.wish_list(order.basket)
-   display.total(order.cost)
+   order.basket
+   order.cost
+  end
+
+  def last_order
+    order.last
   end
 
 
@@ -45,7 +44,7 @@ private
   def select_engine
     client_selection = ''
     until client_selection == 'x'
-      display.wish_list(order.basket)
+      order.basket
       client_selection = gets.chomp
       case client_selection
         when "1"
@@ -63,7 +62,7 @@ private
         when "x"
           client_selection = 'x'
         else
-          display.error
+          puts "Try agaon with numbers within range and no letters"
       end
     end
   end

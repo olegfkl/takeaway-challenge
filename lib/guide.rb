@@ -1,4 +1,4 @@
-require_relative "./restaurant.rb"
+require_relative "restaurant"
 require_relative "order"
 
 
@@ -22,7 +22,6 @@ def print_menu
   puts "|  3. View basket"
   puts "|  4. Place order"
   puts "|  5. View receipt"
-  puts "|  6. View history of your orders"
   puts "|  9. Exit"
   puts " -------------------------------------------"
 end
@@ -31,8 +30,6 @@ def process(selection)
   case selection
     when "1"
       restaurant.the_menu
-      # or
-      # restaurant.display.menus(restaurant.menu.list)
     when "2"
       restaurant.select_food
     when "3"
@@ -40,8 +37,7 @@ def process(selection)
     when "4"
       restaurant.place_order
     when "5"
-    when "6"
-    when "7"
+      restaurant.order.last
     when "9"
       exit
     else

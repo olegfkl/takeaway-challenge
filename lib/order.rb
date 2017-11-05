@@ -1,20 +1,20 @@
+require 'twilio-ruby'
 require 'csv'
-require_relative 'display'
+
 class Order
 
   @@orders_log = []
 
-  attr_reader :basket, :total, :address, :display
+  attr_reader :basket, :total, :address
 
-    def initialize(display = Display.new)
-      @displa = display
+    def initialize
       @total = nil
       @basket = []
       @address = nil
     end
 
-  def self.all_orders
-    @@orders_log
+  def last
+    self
   end
 
   def cost
@@ -30,6 +30,7 @@ class Order
   end
 
   def process
+    # Mocking to add delivery address to the order
     all_addresses = []
     filename = "addresses.csv"
     if File.exists?(filename)
@@ -39,11 +40,20 @@ class Order
       @address = all_addresses.sample
       @@orders_log << self
     else
-      display.address_error
+      raise "We coudn't locate address database"
     end
   end
 
-  def complete
+    def confirmation
+      client = Twilio::REST::Client.new(
+        'AC240baaa883317240294420ee69e16abf',
+        '7095d05339b1d2ddd1b2e7a29c3a9b2d'
+      )
+        client.messages.create(
+        from: '+441325952018',
+        to: '+447809218597',
+        body: "Thank you! Your order was placed and will be delivered before 18:52"
+      )
+      puts "Thank you for your order! You should receive a text message confirming your order"
+    end
   end
-
-end

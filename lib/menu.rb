@@ -1,3 +1,4 @@
+require_relative 'restaurant'
 class Menu
   attr_reader :list
   def initialize
@@ -10,4 +11,5 @@ class Menu
               {"Pasta"         => 5.75}
              ]
   end
+
 end
