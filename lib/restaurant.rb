@@ -31,6 +31,11 @@ class Restaurant
   def place_order
   end
 
+  def view_basket
+   display.wish_list(order.basket)
+   display.total(order.cost)
+  end
+
 
 private
 
